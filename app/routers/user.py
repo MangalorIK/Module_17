@@ -22,7 +22,7 @@ async def all_users(db: Annotated[Session, Depends(get_db)]):
 
 
 @router.get("/user_id")
-async def user_by_id(db: Annotated[Session, Depends(get_db)],user_id: int, get_user: CreateUser):
+async def user_by_id(db: Annotated[Session, Depends(get_db)],user_id: int):
     user = db.scalar(select(User).where(User.id == user_id))
     if user is None:
         raise HTTPException(
@@ -45,7 +45,7 @@ async def create_user(db: Annotated[Session,Depends(get_db)], create_user: Creat
     }
 
 @router.put("/update")
-async def update_user(db: Annotated[Session, Depends(get_db)],user_id: int, update_user: CreateUser):
+async def update_user(db: Annotated[Session, Depends(get_db)],user_id: int, update_user: UpdateUser):
     user = db.scalar(select(User).where(User.id == user_id))
     if user is None:
         raise HTTPException(
