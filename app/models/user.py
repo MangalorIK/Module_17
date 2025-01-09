@@ -16,5 +16,5 @@ class User(Base):
 
 
 
-from sqlalchemy.schema import CreateTable
-print(CreateTable(User.__table__))
+# from sqlalchemy.schema import CreateTable
+# print(CreateTable(User.__table__))
